@@ -27,7 +27,10 @@ app.get("/managers", (req, res) => {
 });
 
 app.get("/departments", (req, res) => {
-  res.send("Getting all departments");
+  dataService
+    .getDepartments()
+    .then((depList) => res.json(depList))
+    .catch((err) => res.status(500).send({ message: err }));
 });
 
 app.get("*", (req, res) => {
