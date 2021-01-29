@@ -41,3 +41,10 @@ function getDepartments() {
     res(departments);
   });
 }
+
+module.exports = {
+  initialize,
+  getAllEmployees,
+  getDepartments,
+  getManagers,
+};

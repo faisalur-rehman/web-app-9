@@ -1,4 +1,5 @@
 const express = require("express");
+const dataService = require("./data-service");
 const joinWithBasePath = require("./utils/base_path");
 
 global.__basedir = __dirname;
@@ -31,6 +32,12 @@ app.get("*", (req, res) => {
 });
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () =>
-  console.log(`Express http server is listening on port ${PORT}`)
-);
+
+dataService
+  .initialize()
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(`Express http server is listening on port ${PORT}`)
+    );
+  })
+  .catch((err) => console.log(err));
