@@ -25,3 +25,12 @@ function getAllEmployees() {
     res(employees);
   });
 }
+
+function getManagers() {
+  return new Promise((res, rej) => {
+    const managers = employees.filter((emp) => emp.isManager === true);
+
+    if (managers.length === 0) rej("No results returned");
+    res(managers);
+  });
+}
