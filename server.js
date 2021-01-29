@@ -26,6 +26,10 @@ app.get("/departments", (req, res) => {
   res.send("Getting all departments");
 });
 
+app.get("*", (req, res) => {
+  res.status(404).send("404 - Page is not Found");
+});
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>
   console.log(`Express http server is listening on port ${PORT}`)
