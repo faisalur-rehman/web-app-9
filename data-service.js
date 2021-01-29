@@ -18,3 +18,10 @@ function initialize() {
     });
   });
 }
+
+function getAllEmployees() {
+  return new Promise((res, rej) => {
+    if (employees.length === 0) rej("No results returned");
+    res(employees);
+  });
+}
