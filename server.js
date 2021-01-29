@@ -16,7 +16,10 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/employees", (req, res) => {
-  res.send("Getting all employees");
+  dataService
+    .getAllEmployees()
+    .then((empList) => res.json(empList))
+    .catch((err) => res.status(500).send({ message: err }));
 });
 
 app.get("/managers", (req, res) => {
