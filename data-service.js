@@ -34,3 +34,10 @@ function getManagers() {
     res(managers);
   });
 }
+
+function getDepartments() {
+  return new Promise((res, rej) => {
+    if (departments.length === 0) rej("No results returned");
+    res(departments);
+  });
+}
