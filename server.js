@@ -23,7 +23,10 @@ app.get("/employees", (req, res) => {
 });
 
 app.get("/managers", (req, res) => {
-  res.send("Getting all managers");
+  dataService
+    .getManagers()
+    .then((managers) => res.json(managers))
+    .catch((err) => res.status(500).send({ message: err }));
 });
 
 app.get("/departments", (req, res) => {
